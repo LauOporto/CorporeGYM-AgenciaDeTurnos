@@ -2,7 +2,7 @@ import mysql from 'mysql2/promise';
 import { env } from './env';
 
 // Pool de conexiones – reutilizable en toda la app
-const pool = mysql.createPool({
+const dbConfig: mysql.PoolOptions = {
   host: env.db.host,
   port: env.db.port,
   user: env.db.user,
@@ -13,7 +13,13 @@ const pool = mysql.createPool({
   queueLimit: 0,
   timezone: 'local',
   charset: 'utf8mb4',
-});
+};
+
+if (env.nodeEnv === 'production') {
+  dbConfig.ssl = { rejectUnauthorized: false };
+}
+
+const pool = mysql.createPool(dbConfig);
 
 export async function testConnection(): Promise<void> {
   const conn = await pool.getConnection();
