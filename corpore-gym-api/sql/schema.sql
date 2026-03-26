@@ -2,8 +2,7 @@
 -- CORPORE GYM – Schema de Base de Datos
 -- ============================================================
 
-CREATE DATABASE IF NOT EXISTS corpore_gym CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE corpore_gym;
+-- Eliminados CREATE DATABASE y USE para compatibilidad con servicios Cloud
 
 -- ============================================================
 -- Tabla: usuarios
