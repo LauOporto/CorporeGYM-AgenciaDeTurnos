@@ -9,7 +9,7 @@ async function makeAdmin() {
 
   try {
     const [result]: any = await pool.execute(
-      'UPDATE usuarios SET rol = "admin", cuota_al_dia = 1 WHERE email = ?',
+      "UPDATE usuarios SET rol = 'admin', cuota_al_dia = 1 WHERE email = ?",
       [email]
     );
 
